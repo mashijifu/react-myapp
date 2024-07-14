@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Hello text="World" onClickButton={onClickButton} />
+      <Hello text="World" onClickButton={onClickButton}>Hello</Hello>
       <h1>Reactコース</h1>
       <Button
         text="ボタン１"
