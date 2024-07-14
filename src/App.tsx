@@ -4,6 +4,10 @@ import Button from './components/Button';
 import Hello from './components/Hello';
 
 const App: React.FC = () => {
+  const onClickButton = (): void => {
+    alert("Hello,World");
+  }
+
   const onClickButtonFirst = (): void => {
     alert('ボタン１をクリックしました！');
   };
@@ -18,7 +22,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <Hello text="World" />
+      <Hello text="World" onClickButton={onClickButton} />
       <h1>Reactコース</h1>
       <Button
         text="ボタン１"
