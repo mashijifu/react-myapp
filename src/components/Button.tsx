@@ -1,17 +1,27 @@
 import React from 'react';
 import '../styles/button.css';
 
-const Button: React.FC = () => {
-  const onClickButton = (): void => {
-    alert('Reactコースを順調に学習中！');
-  };
+interface Props {
+  text: string;
+  color: string;
+  size: string;
+  isHollow: boolean;
+  onClickButton: () => void;
+}
+
+const Button: React.FC<Props> = (props) => {
+  let className = "";
+  className += props.color;
+  className += props.isHollow ? 'Hollow' : '';
+  className += ' ';
+  className += props.size;
 
   return (
     <button
-      className="blueberry M"
-      onClick={onClickButton}
+      className={className}
+      onClick={props.onClickButton}
     >
-      ボタンコンポーネント
+      {props.text}
     </button>
   );
 };
