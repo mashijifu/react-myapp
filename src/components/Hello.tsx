@@ -1,11 +1,15 @@
 import React from 'react';
 
-const Hello: React.FC = () => {
+interface Props {
+  text: string;
+}
+
+const Hello: React.FC<Props> = (props) => {
 
   return (
     <div>
       <h1>Helloコンポーネント</h1>
-      <p>Hello,World</p>
+      <p>Hello,{props.text}</p>
     </div>
   );
 };

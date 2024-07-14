@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Button from './components/Button';
+import Hello from './components/Hello';
 
 const App: React.FC = () => {
   const onClickButtonFirst = (): void => {
@@ -17,6 +18,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <Hello text="World" />
       <h1>Reactコース</h1>
       <Button
         text="ボタン１"
