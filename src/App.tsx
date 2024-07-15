@@ -1,32 +1,36 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
-import { useState, useEffect } from 'react';
+import Counter from './components/Counter';
+
+export type CounterContextType = {
+  text: string
+  count: number;
+  setCount: (count: number) => void;
+};
+
+export const CounterContext = createContext<CounterContextType>({
+  text: "",
+  count: 0,
+  setCount: () => {}
+});
 
 const App: React.FC = () => {
-  const [ countByOne, setCountByOne ] = useState(0);
-  const [ countByFive, setCountByFive ] = useState(0);
-  const [ sum, setSum ] = useState(0);
+  const [ count, setCount ] = useState(0);
+  const text: string = "Reactコース";
 
-  const incrementOne = (): void => {
-    setCountByOne(countByOne + 1);
+  const increment = (): void => {
+    setCount(count + 1);
   };
 
-  const incrementFive = (): void => {
-    setCountByFive(countByFive + 5);
+  const contextValue = {
+    text, count, setCount
   };
-
-  useEffect(() => {
-    setSum(countByOne + countByFive);
-  }, [countByOne, countByFive]);
 
   return (
     <div className="App">
-      <h1>Reactコース</h1>
-      <p>{ countByOne }</p>
-      <button onClick={incrementOne}>1加算</button>
-      <p>{ countByFive }</p>
-      <button onClick={incrementFive}>5加算</button>
-      <p>合計：{ sum }</p>
+      <CounterContext.Provider value={contextValue}>
+        <Counter />
+      </CounterContext.Provider>
     </div>
   );
 };
