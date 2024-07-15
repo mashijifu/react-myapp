@@ -1,12 +1,13 @@
-import React, { createContext, useState } from 'react';
+import React from 'react';
 import './App.css';
+import { createContext, useState } from 'react';
 import Counter from './components/Counter';
 
 export type CounterContextType = {
-  text: string
+  text: string;
   count: number;
   setCount: (count: number) => void;
-};
+}
 
 export const CounterContext = createContext<CounterContextType>({
   text: "",
@@ -24,7 +25,7 @@ const App: React.FC = () => {
 
   const contextValue = {
     text, count, setCount
-  };
+  }
 
   return (
     <div className="App">
