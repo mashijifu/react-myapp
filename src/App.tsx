@@ -1,50 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import Button from './components/Button';
-import Hello from './components/Hello';
 
 const App: React.FC = () => {
-  const onClickButton = (): void => {
-    alert("Hello,World");
-  }
+  const [count, setCount] = useState(0);
 
-  const onClickButtonFirst = (): void => {
-    alert('ボタン１をクリックしました！');
-  };
-
-  const onClickButtonSecond = (): void => {
-    alert('ボタン２をクリックしました！');
-  };
-
-  const onClickButtonThird = (): void => {
-    alert('ボタン３をクリックしました！');
+  const increment = (): void => {
+    setCount(count + 1);
   };
 
   return (
     <div className="App">
-      <Hello text="World" onClickButton={onClickButton}>Hello</Hello>
       <h1>Reactコース</h1>
-      <Button
-        text="ボタン１"
-        color="blueberry"
-        size="S"
-        isHollow={false}
-        onClickButton={onClickButtonFirst}
-      />
-      <Button
-        text="ボタン２"
-        color="grape"
-        size="M"
-        isHollow={true}
-        onClickButton={onClickButtonSecond}
-      />
-      <Button
-        text="ボタン3"
-        color="apple"
-        size="L"
-        isHollow={false}
-        onClickButton={onClickButtonThird}
-      />
+      <p>{ count }</p>
+      <button onClick={increment}>加算</button>
     </div>
   );
 };
