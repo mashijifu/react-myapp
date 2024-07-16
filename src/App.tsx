@@ -20,6 +20,10 @@ const App: React.FC = () => {
     count, setCount
   }
 
+  const onClickButton = (text: string): void => {
+    console.log(text);
+  };
+
   const submitOut = (e: any): void => {
     e.preventDefault();
     console.log('submit');
@@ -27,6 +31,9 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <button onClick={() => {onClickButton("clickされました！")}}>
+        ボタン
+      </button>
       <form onSubmit={submitOut}>
         <button type="submit">送信</button>
       </form>
