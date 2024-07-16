@@ -20,13 +20,16 @@ const App: React.FC = () => {
     count, setCount
   }
 
-  const clickAlert = (): void => {
-    alert('ボタンがクリックされました');
+  const submitOut = (e: any): void => {
+    e.preventDefault();
+    console.log('submit');
   };
 
   return (
     <div className="App">
-      <button onClick={clickAlert}>ボタン</button>
+      <form onSubmit={submitOut}>
+        <button type="submit">送信</button>
+      </form>
       <CountContext.Provider value={contextValue}>
         <Content />
       </CountContext.Provider>
