@@ -1,37 +1,30 @@
 import React from 'react';
 import './App.css';
 import { createContext, useState } from 'react';
-import Counter from './components/Counter';
+import Content from './components/Content';
 
-export type CounterContextType = {
-  text: string;
+export type CountContextType = {
   count: number;
-  setCount: (count: number) => void;
+	setCount: (count: number) => void;
 }
 
-export const CounterContext = createContext<CounterContextType>({
-  text: "",
+export const CountContext = createContext<CountContextType>({
   count: 0,
   setCount: () => {}
 });
 
 const App: React.FC = () => {
   const [ count, setCount ] = useState(0);
-  const text: string = "Reactコース";
-
-  const increment = (): void => {
-    setCount(count + 1);
-  };
 
   const contextValue = {
-    text, count, setCount
+    count, setCount
   }
 
   return (
     <div className="App">
-      <CounterContext.Provider value={contextValue}>
-        <Counter />
-      </CounterContext.Provider>
+      <CountContext.Provider value={contextValue}>
+        <Content />
+      </CountContext.Provider>
     </div>
   );
 };
