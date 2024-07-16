@@ -20,8 +20,13 @@ const App: React.FC = () => {
     count, setCount
   }
 
+  const clickAlert = (): void => {
+    alert('ボタンがクリックされました');
+  };
+
   return (
     <div className="App">
+      <button onClick={clickAlert}>ボタン</button>
       <CountContext.Provider value={contextValue}>
         <Content />
       </CountContext.Provider>
