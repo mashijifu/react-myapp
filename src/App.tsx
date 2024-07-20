@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, NavLink } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -11,9 +11,24 @@ const App: React.FC = () => {
     <div className="App">
       <h1>Reactコース</h1>
       <div>
-        <Link to="/">Home</Link>|
-        <Link to="/about">About</Link>|
-        <Link to="/contact">Contact</Link>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : undefined)}
+          to="/"
+        >
+          Home
+        </NavLink>|
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : undefined)}
+          to="/about"
+        >
+          About
+        </NavLink>|
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : undefined)}
+          to="/contact"
+        >
+          Contact
+        </NavLink>
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
