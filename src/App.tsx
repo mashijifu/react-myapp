@@ -1,24 +1,19 @@
 import React from 'react';
-import { useState } from 'react';
 
 const App: React.FC = () => {
-  const [ count, setCount ] = useState(0);
+  const items: Array<string> = [
+    "React", "Vue", "Angular"
+  ];
 
-  const increment = () => {
-    setCount(count + 1);
-  }
-
-  let isMultipleOfThree: boolean = false;
-  if (count % 3 === 0 && count !== 0) {
-    isMultipleOfThree = true;
-  }
+  const itemList = items.map((item, index) =>
+    <li key={index}>
+      { item }
+    </li>
+  );
 
   return (
-    <div>
-      <p style={ isMultipleOfThree ? { color: "red" } : {} }>{ count }</p>
-      <button onClick={increment}>+</button>
-    </div>
-  )
+    <ul>{ itemList }</ul>
+  );
 };
 
 export default App;
