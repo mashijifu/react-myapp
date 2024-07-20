@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import Tasks from './pages/Tasks';
+import Task from './pages/Task';
 
 const App: React.FC = () => {
 
@@ -30,11 +32,20 @@ const App: React.FC = () => {
         >
           Contact
         </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : undefined)}
+          to="/tasks"
+        >
+          Tasks
+        </NavLink>
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/tasks" element={<Tasks />}>
+          <Route path="task" element={<Task />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
