@@ -8,9 +8,14 @@ const App: React.FC = () => {
     setCount(count + 1);
   }
 
+  let isMultipleOfThree: boolean = false;
+  if (count % 3 === 0 && count !== 0) {
+    isMultipleOfThree = true;
+  }
+
   return (
     <div>
-      <p style={ count !== 0 && count % 3 === 0 ? { color: "red" } : { color: "black" }}>{ count }</p>
+      <p style={ isMultipleOfThree ? { color: "red" } : {} }>{ count }</p>
       <button onClick={increment}>+</button>
     </div>
   )
