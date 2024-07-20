@@ -1,18 +1,18 @@
 import React from 'react';
+import { useState } from 'react';
 
 const App: React.FC = () => {
-  const num: number = 10;
+  const [ count, setCount ] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  }
 
   return (
-    <h1>
-      {(() => {
-        if(num >= 10) {
-          return <h1>TypeScript</h1>
-        } else {
-          return <h1>JavaScript</h1>
-        }
-      })()}
-    </h1>
+    <div>
+      <p style={ count !== 0 && count % 3 === 0 ? { color: "red" } : { color: "black" }}>{ count }</p>
+      <button onClick={increment}>+</button>
+    </div>
   )
 };
 
