@@ -1,53 +1,30 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route, Link, NavLink } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import NotFound from './pages/NotFound';
-import Tasks from './pages/Tasks';
-import Task from './pages/Task';
+import { useState, useMemo } from 'react';
+
 
 const App: React.FC = () => {
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+
+  const double = (count: number): number =>  {
+    let i = 0;
+    while (i < 1000000000) i++;
+    return count * 2;
+  }
+
+  const doubleCount = useMemo(() => double(count1), [count1]);
+
+  // useMemoを利用しない場合の記述
+  // const doubleCount = double(count1);
 
   return (
-    <div className="App">
-      <h1>Reactコース</h1>
-      <div>
-        <NavLink
-          className={({ isActive }) => (isActive ? 'active' : undefined)}
-          to="/"
-        >
-          Home
-        </NavLink>|
-        <NavLink
-          className={({ isActive }) => (isActive ? 'active' : undefined)}
-          to="/about"
-        >
-          About
-        </NavLink>|
-        <NavLink
-          className={({ isActive }) => (isActive ? 'active' : undefined)}
-          to="/contact"
-        >
-          Contact
-        </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? 'active' : undefined)}
-          to="/tasks"
-        >
-          Tasks
-        </NavLink>
-      </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/tasks" element={<Tasks />}>
-          <Route path=":taskId" element={<Task />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+    <div className='App'>
+      <p>Count1:{count1}</p>
+      <p>doubleCount:{doubleCount}</p>
+      <button onClick={()=>setCount1(count1 + 1)}>加算1</button>
+      <p>Count2:{count2}</p>
+      <button onClick={()=>setCount2(count2 + 1)}>加算2</button>
     </div>
   );
 };
